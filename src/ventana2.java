@@ -48,6 +48,7 @@ public class ventana2 extends JFrame {
 		contentPane.add(lblNombre);
 		
 		txtNombre = new JTextField();
+		txtNombre.setBorder(new LineBorder(Color.BLACK, 2, true));
 		txtNombre.setBounds(147, 34, 220, 20);
 		contentPane.add(txtNombre);
 		txtNombre.setColumns(10);
