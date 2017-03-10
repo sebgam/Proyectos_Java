@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.Font;
@@ -19,12 +20,14 @@ import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
+import java.awt.Window.Type;
+import java.awt.Dialog.ModalExclusionType;
 
 public class login extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtUser;
-	private JPasswordField txtPass;
+	public static JTextField txtUser;
+	public static JPasswordField txtPass;
 
 	
 	public login() {
@@ -56,11 +59,20 @@ public class login extends JFrame {
 		lblContrasea.setFont(new Font("Calibri", Font.BOLD, 15));
 		lblContrasea.setBounds(140, 158, 107, 32);
 		contentPane.add(lblContrasea);
+		final datosUsuario data = new datosUsuario();
+		final ventana2 window = new ventana2();
 		
 		JButton btnIniciar = new JButton("Iniciar Sesion");
 		btnIniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				if(data.probarPass()==1){
+					
+					window.setVisible(true);
+					dispose();
+					
+				}else{
+					JOptionPane.showMessageDialog(null, "error usuario o contraseña incorrectos");
+				}
 			}
 		});
 		btnIniciar.setIcon(new ImageIcon("C:\\Users\\user\\Pictures\\mi logo\\Pack de iconos\\all_icons_by_Icons8_free\\iOS7\\PNG\\25\\Data\\transfer_between_users-25.png"));
